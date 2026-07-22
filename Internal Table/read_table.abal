@@ -1,0 +1,32 @@
+REPORT zfind.
+
+TYPES: BEGIN OF ty_student,
+         name    TYPE string,
+         roll_no TYPE i,
+       END OF ty_student.
+
+DATA: ls_student TYPE ty_student,
+      lt_student TYPE TABLE OF ty_student.
+
+ls_student-name = 'Himanshi'.
+ls_student-roll_no = 1.
+APPEND ls_student TO lt_student.
+
+ls_student-name = 'Rahul'.
+ls_student-roll_no = 2.
+APPEND ls_student TO lt_student.
+
+ls_student-name = 'Priya'.
+ls_student-roll_no = 3.
+APPEND ls_student TO lt_student.
+
+READ TABLE lt_student INTO ls_student
+     WITH KEY roll_no = 3.
+
+IF sy-subrc = 0.
+  WRITE: / 'Student Found',
+         / ls_student-roll_no,
+           ls_student-name.
+ELSE.
+  WRITE: / 'Student Not Found'.
+ENDIF.
