@@ -1,3 +1,4 @@
+-------------AVG--------------
 REPORT zavg.
 
 DATA lv_avg TYPE zstudent-cgpa.
